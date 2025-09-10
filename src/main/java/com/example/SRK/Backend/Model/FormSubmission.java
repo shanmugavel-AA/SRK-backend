@@ -22,7 +22,7 @@ public class FormSubmission {
     private String formType;
 
     @NotBlank(message = "name is Required")
-    @Pattern(regexp = "^[a-zA-Z ]+$\", message = \"Invalid name. Only letters and spaces are allowed.\"")
+    @Pattern(regexp = "^[a-zA-Z\\- ]+$", message = "Invalid name. Only letters, spaces, and hyphens are allowed.")
     private String name;
 
     @NotBlank(message = "Email is required")
