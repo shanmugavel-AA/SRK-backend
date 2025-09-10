@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/blogs")
-@CrossOrigin(origins = "https://honeydew-dolphin-230425.hostingersite.com/")
+@CrossOrigin(origins = "https://darkcyan-woodcock-495538.hostingersite.com/")
 public class BlogController {
 
     private final BlogRepository blogRepository;
