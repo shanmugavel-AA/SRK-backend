@@ -40,6 +40,8 @@ public class BlogService {
         blog.setContentHtml(blogDetails.getContentHtml());
         blog.setDate(blogDetails.getDate());
         blog.setFeatured(blogDetails.isFeatured());
+        blog.setMetaTitle(blogDetails.getMetaTitle());
+        blog.setMetaDescription(blogDetails.getMetaDescription());
         return blogRepository.save(blog);
     }
 }

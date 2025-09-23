@@ -22,6 +22,9 @@ public class Blog {
     private String date;
     private boolean featured = false;
     private String bannerUrl;
+    private String metaTitle;
+    private String metaDescription;
+
 
     @Lob
     @Column(columnDefinition = "TEXT")
