@@ -40,10 +40,12 @@ public class BlogController {
     }
 
     @GetMapping("/slug/{slug}")
-    public Blog getBlogBySlug(@PathVariable String slug) {
+    public ResponseEntity<Blog> getBlogBySlug(@PathVariable String slug) {
         return blogRepository.findBySlug(slug)
-                .orElseThrow(() -> new RuntimeException("Blog not found"));
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
+
 
 
 
