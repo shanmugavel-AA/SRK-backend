@@ -39,7 +39,7 @@ public class BlogController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/{slug}")
+    @GetMapping("/slug/{slug}")
     public Blog getBlogBySlug(@PathVariable String slug) {
         return blogRepository.findBySlug(slug)
                 .orElseThrow(() -> new RuntimeException("Blog not found"));
