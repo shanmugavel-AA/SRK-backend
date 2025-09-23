@@ -31,7 +31,7 @@ public class BlogController {
         return blogRepository.findAll();
     }
 
-    @GetMapping("/api/blogs/slugs")
+    @GetMapping("/slugs")
     public List<String> getBlogSlugs() {
         return blogRepository.findAll()
                 .stream()
@@ -39,7 +39,7 @@ public class BlogController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/api/blogs/slug/{slug}")
+    @GetMapping("/slug/{slug}")
     public Blog getBlogBySlug(@PathVariable String slug) {
         return blogRepository.findBySlug(slug)
                 .orElseThrow(() -> new RuntimeException("Blog not found"));
