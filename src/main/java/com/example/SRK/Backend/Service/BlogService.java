@@ -19,6 +19,9 @@ public class BlogService {
         if (blog.isFeatured()){
             blogRepository.unsetAllFeatured();
         }
+        if (blog.getSlug() == null || blog.getSlug().isEmpty()) {
+            blog.setSlug(blog.getTitle().toLowerCase().replaceAll("[^a-z0-9]+", "-"));
+        }
         return blogRepository.save(blog);
     }
 
@@ -42,6 +45,13 @@ public class BlogService {
         blog.setFeatured(blogDetails.isFeatured());
         blog.setMetaTitle(blogDetails.getMetaTitle());
         blog.setMetaDescription(blogDetails.getMetaDescription());
+        blog.setSlug(generateSlug(blogDetails.getTitle()));
         return blogRepository.save(blog);
+    }
+
+    private String generateSlug(String title) {
+        return title.toLowerCase()
+                .replaceAll("[^a-z0-9]+", "-")  // replace non-alphanumeric with hyphen
+                .replaceAll("^-|-$", "");       // remove leading/trailing hyphens
     }
 }

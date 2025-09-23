@@ -24,6 +24,7 @@ public class Blog {
     private String bannerUrl;
     private String metaTitle;
     private String metaDescription;
+    private String slug;
 
 
     @Lob

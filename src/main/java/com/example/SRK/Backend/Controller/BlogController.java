@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/blogs")
@@ -29,6 +30,23 @@ public class BlogController {
     public List<Blog> getAllBlogs(){
         return blogRepository.findAll();
     }
+
+    @GetMapping("/api/blogs/slugs")
+    public List<String> getBlogSlugs() {
+        return blogRepository.findAll()
+                .stream()
+                .map(Blog::getSlug)  // use the new slug field
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/api/blogs/slug/{slug}")
+    public Blog getBlogBySlug(@PathVariable String slug) {
+        return blogRepository.findBySlug(slug)
+                .orElseThrow(() -> new RuntimeException("Blog not found"));
+    }
+
+
+
 
     @GetMapping("/{id}")
     public Blog getBlogById(@PathVariable Long id) {

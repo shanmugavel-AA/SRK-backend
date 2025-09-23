@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Repository
 public interface BlogRepository extends JpaRepository<Blog,Long> {
 
@@ -14,4 +16,6 @@ public interface BlogRepository extends JpaRepository<Blog,Long> {
     @Transactional
     @Query("UPDATE Blog b SET b.featured = false WHERE b.featured = true")
     void unsetAllFeatured();
+
+    Optional<Blog> findBySlug(String slug);
 }
