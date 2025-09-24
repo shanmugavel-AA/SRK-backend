@@ -41,6 +41,7 @@ public class BlogService {
         blog.setImgUrl(blogDetails.getImgUrl());
         blog.setBannerUrl(blogDetails.getBannerUrl());
         blog.setContentHtml(blogDetails.getContentHtml());
+        blog.setFaqJson(blogDetails.getFaqJson());
         blog.setDate(blogDetails.getDate());
         blog.setFeatured(blogDetails.isFeatured());
         blog.setMetaTitle(blogDetails.getMetaTitle());
